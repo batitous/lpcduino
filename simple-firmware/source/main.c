@@ -28,6 +28,7 @@
 #include "../include/pinout.h"
 
 #include "../../shared/include/usbUart.h"
+#include "../../shared/include/utils.h"
 
 
 //------------------------ private variables
@@ -37,8 +38,27 @@ KTask           usbTask;
 
 void usbTaskCode(uint32_t size)
 {
-
+    uint8_t buffer[96];
+    uint32_t receive;
+  
+    receive = getBufferFromUsbUart(buffer, size);
     
+    if (receive!=0)
+    {
+        switch(buffer[0])
+        {
+            case '1':
+                printf("Test USB UART is working !\r\n");
+                
+                break;
+            case 'v':
+                printf("Firmware compiled at %s - %s\r\n", __DATE__, __TIME__);
+                break;
+            default:
+                NVIC_SystemReset();
+           break;
+        }
+    }
     
 }
 
@@ -57,7 +77,7 @@ int main(void)
     // Turn on the Eeprom block
     SETBIT(LPC_SYSCON->SYSAHBCLKCTRL[0], 9);
     
-    initUsbClock();
+    initUsbUart();
     
     //-------------------------- UART0 and UART1 initialization
 //    assignMovableFunctionToGpio(SWM_UART0_RXD_I , UART_RX_IN);
@@ -69,9 +89,9 @@ int main(void)
     initSimpleKernel();
     
     
-    initUsbUart();
-    initTask(&usbTask, usbTaskCode, USB_RCV_TASK_PRIORITY);
+    initTask(&usbTask, usbTaskCode, USB_DEBUG_TASK_PRIORITY);
     assignTaskOnUsbUart(&usbTask);
+    setPrintfInterface(sendByteToUsb);
     
     //-------------------------- Applications initialization
     

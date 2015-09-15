@@ -32,12 +32,7 @@ extern "C" {
 
 #define WATCHDOG_REFRESH_MS     1500 
 
-
-    
-#define CAN_BUS_TASK_PRIORITY           150
-#define USB_RCV_TASK_PRIORITY           101
-#define UART_RCV_TASK_PRIORITY          100
-#define UART_DEBUG_TASK_PRIORITY        PRIORITY_LOW
+#define USB_DEBUG_TASK_PRIORITY        PRIORITY_LOW
     
     
 #ifdef	__cplusplus
