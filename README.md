@@ -10,7 +10,7 @@ You have to clone klipos repo.
 
 ## Structure
 
-
+* `shared` stores the USB driver and the shared code between firmware.
 
 
 ## License

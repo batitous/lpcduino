@@ -1,0 +1,10 @@
+*.d
+*.o
+*.hex
+*.elf
+*.bin
+*.map
+*.app
+*.user
+build
+private
