@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="90">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="../../klipos" name="1">
+    <df root="../../klipos" name="0">
     </df>
-    <df root="../shared" name="2">
+    <df root="../shared" name="1">
+      <df name="include">
+        <in>shared-pinout.h</in>
+      </df>
     </df>
-    <df root="." name="0">
+    <df root="." name="2">
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -47,6 +50,8 @@
           </cTool>
         </makeTool>
       </makefileType>
+      <item path="../shared/include/shared-pinout.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

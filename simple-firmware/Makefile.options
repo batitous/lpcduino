@@ -10,7 +10,6 @@ DEFINE = -DSTACKSIZE=256 -DMCU_USE_EXTERNAL_OSC=1
 
 # Increase usb-uart kernel size for memory protocol
 DEFINE+= -DUARTUSB_BUFFER_SIZE=1024 -DTASK_QUEUE_SIZE=16
-DEFINE+= 
 
 
 # Project source files:
@@ -36,18 +35,17 @@ KLIPOS_PATH=../../klipos/
 
 mcu = lpc1549
 
-exception = yes
-libc = yes
+exception = no
+libc = no
 
 printf = yes
-fsm = yes
+fsm = no
 
-uart0 = yes
-uart1 = yes
+uart0 = no
+uart1 = no
 
 can0 = no
-
-pinmux = yes
+pinmux = no
 
 gpio = yes
 gpioirq = yes
@@ -56,13 +54,13 @@ gpio-option = yes
 analog = yes
 dac = yes
 
-eeprom = yes
+eeprom = no
 
 timer = no
 timer-rit = yes
 watchdog = yes
 
-bytestream = yes
+bytestream = no
 
 pwm = yes
 
