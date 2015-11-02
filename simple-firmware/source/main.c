@@ -29,6 +29,7 @@
 
 #include "../../shared/include/usbUart.h"
 #include "../../shared/include/utils.h"
+#include "../../shared/include/shared-pinout.h"
 
 
 //------------------------ private variables
@@ -80,9 +81,10 @@ int main(void)
     initUsbUart();
     
     //-------------------------- UART0 and UART1 initialization
-//    assignMovableFunctionToGpio(SWM_UART0_RXD_I , UART_RX_IN);
-//    assignMovableFunctionToGpio(SWM_UART0_TXD_O , UART_TX_OUT);
+    assignMovableFunctionToGpio(SWM_UART0_RXD_I , RX);
+    assignMovableFunctionToGpio(SWM_UART0_TXD_O , TX);
     
+    initUart0(115200);
     
         
     //-------------------------- Kernel and Tasks initialization
@@ -91,7 +93,7 @@ int main(void)
     
     initTask(&usbTask, usbTaskCode, USB_DEBUG_TASK_PRIORITY);
     assignTaskOnUsbUart(&usbTask);
-    setPrintfInterface(sendByteToUsb);
+    setPrintfInterface(sendByteToUart0);
     
     //-------------------------- Applications initialization
     

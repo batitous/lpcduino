@@ -41,11 +41,13 @@ libc = no
 printf = yes
 fsm = no
 
-uart0 = no
+uart0 = yes
 uart1 = no
 
 can0 = no
 pinmux = no
+
+spi = yes
 
 gpio = yes
 gpioirq = yes
